@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Adivina el Número</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  text-align:center;
+  background:#f4f4f4;
+  margin-top:50px;
+}
+.container{
+  background:white;
+  padding:30px;
+  width:300px;
+  margin:auto;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+input{
+  padding:10px;
+  width:80px;
+  font-size:16px;
+}
+button{
+  padding:10px 15px;
+  font-size:16px;
+  margin-top:10px;
+  cursor:pointer;
+}
+#mensaje{
+  margin-top:15px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Adivina el número 🎯</h2>
+<p>Estoy pensando en un número del 1 al 100</p>
+
+<input type="number" id="numero">
+<br>
+<button onclick="adivinar()">Intentar</button>
+
+<p id="mensaje"></p>
+<p>Intentos: <span id="intentos">0</span></p>
+</div>
+
+<script>
+let numeroSecreto = Math.floor(Math.random()*100)+1;
+let intentos = 0;
+
+function adivinar(){
+  let numero = document.getElementById("numero").value;
+  intentos++;
+  document.getElementById("intentos").textContent = intentos;
+
+  if(numero == numeroSecreto){
+    document.getElementById("mensaje").textContent = "🎉 ¡Ganaste!";
+  }
+  else if(numero < numeroSecreto){
+    document.getElementById("mensaje").textContent = "El número es más alto ⬆️";
+  }
+  else{
+    document.getElementById("mensaje").textContent = "El número es más bajo ⬇️";
+  }
+}
+</script>
+
+</body>
+</html>
